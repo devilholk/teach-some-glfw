@@ -1,0 +1,43 @@
+Assignment 1 - Basic understanding of Makefiles
+
+	Create a makefile that have the following properties:
+
+		If there is no build directory it should be created. A variable should be used for the name so it can be changed in one place.
+		The primary target is created from a list of object files in a variable.
+		Create a rule that will compile any .c file in the list of object files to .o files in the build directory.
+		The final rule for the target should link all these files to the binary.
+
+		I will help you with the flags for the compiler so instead of issuing the compilation command you can issue the following:
+			echo Compiling [source] to [object]
+			touch [object]
+
+		Similarily for linking
+			echo Linking [object files] to [target]
+			touch [target]
+
+		Here [source], [object], [object files] and [target] should be replaced by special variables in make.		
+		The echo command will just echo out the text.
+		The touch command will create or update the modification date of the target file, simulating a compilation.
+		This way we can test the makefile without actually compiling anything.		
+
+	Useful links:
+		Generic make info
+			[1] https://www.gnu.org/software/make/manual/html_node/Simple-Makefile.html
+
+		Info about phony targets, targets that are not files
+			[2] https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html#Phony-Targets
+
+		Info about how to depend on directories, like a build directory
+			[3] https://stackoverflow.com/a/4614143
+			[4]	https://stackoverflow.com/a/4442521
+
+			Note: Read the comments, there are caveats and they are being discussed.
+
+
+	Note:
+		I think (not sure) that empty directories are not preserved in a git repository.
+		One could either depend on directories using sentinel/placeholder files as in ref [3] or one could just issue mkdir -p before each compile call like in [4].
+		As mentioned under [4] there are caveats using mkdir before each command so maybe that is not the way to do it.
+		You want to avoid race conditions in parallell builds and the way to do that is to make sure to use atomic operations.
+		I will of course help you and look for potential issues in your suggested solution.
+		
