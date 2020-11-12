@@ -1,0 +1,1 @@
+First step is going to be to split initial_example.c up into more files and clean things up a bit. Also we are going to create a Makefile for it so that we can build it.
