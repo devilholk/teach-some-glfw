@@ -1,0 +1,4 @@
+When including header files it is tempting to have one file that includes all the other ones you will be using but this have multiple drawbacks.
+It is good to see in the beginning of each source file what headers it is using to get an idea of what types and signatures are present.
+Less translation modules will have to be built when changing a header since only a subset will be affected.
+Headers and source files should only include headers they make use of.
