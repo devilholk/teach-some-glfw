@@ -7,13 +7,17 @@ all: bin
 bin: excercise1.c
 	gcc $(CFLAGS) $@ $<
 
-.PHONY: test push clean
+.PHONY: test clean diff
 
 test: bin
 	./bin
-         
-push: main.c
-	curl -F 'f:1=<-' ix.io < $<
 
 clean: bin
 	rm -f bin *.d
+
+# @ silences the printing of the command
+# $(info ...) prints output 
+diff:
+	$(info The status of the repository, and the volume of per-file changes:)
+	@git status
+	@git diff --stat
