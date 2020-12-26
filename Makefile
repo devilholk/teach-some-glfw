@@ -1,5 +1,7 @@
 CFLAGS = -std=c99 -O0 -lm -Wall -MP -MD -o
 
+MAKEFLAGS += --no-builtin-rules
+
 all: bin 
 
 bin: excercise1.c
